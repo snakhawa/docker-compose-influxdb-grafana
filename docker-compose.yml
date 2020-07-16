@@ -3,6 +3,7 @@ services:
 # influx
   influxdb:
     image: influxdb:latest
+    container_name: influx
     ports:
       - 8086:8086
     volumes:
@@ -14,6 +15,7 @@ services:
 # chronograf
   chronograf:
     image: chronograf:latest
+    container_name: chronograf
     ports:
       - 127.0.0.1:8888:8888
     volumes:
@@ -26,6 +28,7 @@ services:
       - INFLUXDB_PASSWORD=${INFLUXDB_PASSWORD}
 # grafana
   grafana:
+    container_name: grafana
     image: grafana/grafana:latest
     ports:
       - 3000:3000
@@ -47,7 +50,7 @@ services:
     ports:
       - 1883:1883
       - 9001:9001
-# Telegraff
+# Telegraf
   TELEGRAF:
     image: telegraf
     container_name: telegraf
