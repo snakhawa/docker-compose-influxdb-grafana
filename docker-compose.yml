@@ -48,13 +48,13 @@ services:
         - 1883:1883
         - 9001:9001
 # Telegraff
-   TELEGRAF:
-     image: telegraf
-     container_name: telegraf
-     restart: always
-     volumes:
-       - ${path/to/telegraf-conf}:/etc/telegraf/telegraf.conf:ro
-     ports:
-       - 8125:8125
-       - 8092:8092/udp
-       - 8094:8094
+  TELEGRAF:
+    image: telegraf
+    container_name: telegraf
+    restart: always
+    volumes:
+      - ${path/to/telegraf-conf}:/etc/telegraf/telegraf.conf:ro
+    ports:
+      - 8125:8125
+      - 8092:8092/udp
+      - 8094:8094
