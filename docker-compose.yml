@@ -21,7 +21,7 @@ services:
     depends_on:
       - influxdb
     environment:
-      - INFLUXDB_URL=http:0.0.0.0:8086
+      - INFLUXDB_URL=http:${0.0.0.0}:8086
       - INFLUXDB_USERNAME=${INFLUXDB_USERNAME}
       - INFLUXDB_PASSWORD=${INFLUXDB_PASSWORD}
 # grafana
@@ -38,23 +38,23 @@ services:
       - GF_SECURITY_ADMIN_USER=${GRAFANA_USERNAME}
       - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
 # MQTT
-    MQTT:
-        image: eclipse-mosquitto
-        container_name: mosquitto
-        restart: always
-        volumes:
-          - /home/tim/docker/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
-        ports:
-          - 1883:1883
-          - 9001:9001
+  MQTT:
+      image: eclipse-mosquitto
+      container_name: mosquitto
+      restart: always
+      volumes:
+        - $[path/to/mosquitto.conf}:/mosquitto/config/mosquitto.conf
+      ports:
+        - 1883:1883
+        - 9001:9001
 # Telegraff
-      TELEGRAF:
-        image: telegraf
-        container_name: telegraf
-        restart: always
-        volumes:
-          - /home/tim/docker/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
-        ports:
-          - 8125:8125
-          - 8092:8092/udp
-          - 8094:8094
+   TELEGRAF:
+     image: telegraf
+     container_name: telegraf
+     restart: always
+     volumes:
+       - ${path/to/telegraf-conf}:/etc/telegraf/telegraf.conf:ro
+     ports:
+       - 8125:8125
+       - 8092:8092/udp
+       - 8094:8094
