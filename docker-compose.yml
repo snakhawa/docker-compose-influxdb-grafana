@@ -39,14 +39,14 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
 # MQTT
   MQTT:
-      image: eclipse-mosquitto
-      container_name: mosquitto
-      restart: always
-      volumes:
-        - $[path/to/mosquitto.conf}:/mosquitto/config/mosquitto.conf
-      ports:
-        - 1883:1883
-        - 9001:9001
+    image: eclipse-mosquitto
+    container_name: mosquitto
+    restart: always
+    volumes:
+      - $[path/to/mosquitto.conf}:/mosquitto/config/mosquitto.conf
+    ports:
+      - 1883:1883
+      - 9001:9001
 # Telegraff
   TELEGRAF:
     image: telegraf
